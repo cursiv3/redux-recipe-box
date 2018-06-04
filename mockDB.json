@@ -1,0 +1,12 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "name": "PB & J",
+      "ingredients": "2 slices Bread, Peanut Butter, Jam",
+      "directions":
+        "Lay bread out, spread peanut butter on BOTH pieces of bread, spread jam on one slice, combine slices of bread, enjoy"
+    }
+  ],
+  "idIncrement": 1
+}
