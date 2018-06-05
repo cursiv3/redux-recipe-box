@@ -1,12 +1,12 @@
 import * as actionTypes from "./actionTypes";
-import DB from "../../mockDB.json";
+import DB from "../mockDB.json";
 
-export const addItem = (recipes, obj) => {
+export const addRecipe = (recipes, obj) => {
   recipes.push(obj);
-  return { type: actionTypes.ADD_ITEM, payload: recipes };
+  return { type: actionTypes.ADD_RECIPE, payload: recipes };
 };
 
-export const editItem = (recipes, id, updateObj) => {
+export const editRecipe = (recipes, id, updateObj) => {
   // find what element in the array the updated recipe is
   // assign that value to entry var
   var entry = recipes
@@ -22,14 +22,14 @@ export const editItem = (recipes, id, updateObj) => {
     return idx === entry ? updateObj : recipe;
   });
 
-  return { type: actionTypes.EDIT_ITEM, payload: updatedRecipes };
+  return { type: actionTypes.EDIT_RECIPE, payload: updatedRecipes };
 };
 
-export const deleteItem = (recipes, id) => {
+export const deleteRecipe = (recipes, id) => {
   let updatedRecipes = recipes.filter(recipe => recipe.id !== id);
 
   return {
-    type: actionTypes.DELETE_ITEM,
+    type: actionTypes.DELETE_RECIPE,
     payload: updatedRecipes
   };
 };
@@ -40,3 +40,7 @@ export const receiveData = json => ({
   type: actionTypes.RECEIVE_DATA,
   payload: json.recipes
 });
+
+export const openModal = () => ({ type: actionTypes.OPEN_MODAL });
+
+export const closeModal = () => ({ type: actionTypes.CLOSE_MODAL });

@@ -1,4 +1,4 @@
-import * as actionTypes from "../actionsTypes";
+import * as actionTypes from "../actionTypes";
 
 export const fetchInitData = (state = false, action) => {
   switch (action.type) {
