@@ -36,10 +36,12 @@ export const deleteRecipe = (recipes, id) => {
 
 export const fetchData = () => receiveData(DB);
 
-export const receiveData = json => ({
-  type: actionTypes.RECEIVE_DATA,
-  payload: json.recipes
-});
+export const receiveData = json => {
+  return {
+    type: actionTypes.RECEIVE_DATA,
+    payload: json
+  };
+};
 
 export const openModal = () => ({ type: actionTypes.OPEN_MODAL });
 

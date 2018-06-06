@@ -1,16 +1,9 @@
 import Recipe from "./Recipe";
 import { connect } from "react-redux";
-import { addRecipe, editRecipe, deleteRecipe } from "../../state/actions";
-
-const mapStateToProps = state => ({
-  data: state
-});
+import { editRecipe, deleteRecipe } from "../../state/actions";
 
 const mapDispatchToProps = dispatch => {
   return {
-    addRecipe: () => {
-      dispatch(addRecipe());
-    },
     editItem: () => {
       dispatch(editRecipe());
     },
@@ -20,4 +13,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Recipe);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Recipe);

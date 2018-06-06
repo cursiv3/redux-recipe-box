@@ -9,7 +9,7 @@ export const fetchInitData = (state = false, action) => {
   }
 };
 
-export const recipes = (state = [], action) => {
+export const data = (state = [], action) => {
   switch (action.type) {
     case actionTypes.RECEIVE_DATA:
     case actionTypes.ADD_RECIPE:
