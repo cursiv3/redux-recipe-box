@@ -8,7 +8,8 @@ class App extends Component {
 
     this.state = {
       recipes: [],
-      idTracker: null
+      idTracker: null,
+      isModalOpen: false
     };
   }
 
@@ -20,9 +21,16 @@ class App extends Component {
       var storeData = this.props.state;
       this.setState({
         recipes: storeData.recipes,
-        idTracker: storeData.idIncrement
+        idTracker: storeData.idIncrement,
+        isModalOpen: storeData.isModalOpen
       });
     });
+  }
+
+  modalRenderCheck() {
+    if (this.props.isModalOpen) {
+      return <Modal />;
+    }
   }
 
   render() {
@@ -31,9 +39,10 @@ class App extends Component {
         {this.state.recipes.map(recipeData => (
           <Recipe key={recipeData.id} data={recipeData} />
         ))}
-        <div className="button-main" onClick={this.props.openModal}>
+        <div className="button-main" onClick={evt => this.props.openModal(evt)}>
           Add Recipe
         </div>
+        {this.modalRenderCheck()}
       </div>
     );
   }

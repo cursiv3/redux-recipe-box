@@ -1,9 +1,12 @@
 import Recipe from "./Recipe";
 import { connect } from "react-redux";
-import { editRecipe, deleteRecipe } from "../../state/actions";
+import { editRecipe, deleteRecipe, openModal } from "../../state/actions";
 
 const mapDispatchToProps = dispatch => {
   return {
+    openModal: recipe => {
+      dispatch(openModal(recipe));
+    },
     editItem: () => {
       dispatch(editRecipe());
     },

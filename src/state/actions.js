@@ -7,6 +7,7 @@ export const addRecipe = (recipes, obj) => {
 };
 
 export const editRecipe = (recipes, id, updateObj) => {
+  console.log(recipes, id, updateObj);
   // find what element in the array the updated recipe is
   // assign that value to entry var
   var entry = recipes
@@ -43,6 +44,11 @@ export const receiveData = json => {
   };
 };
 
-export const openModal = () => ({ type: actionTypes.OPEN_MODAL });
+export const openModal = recipe => {
+  return {
+    type: actionTypes.OPEN_MODAL,
+    payload: recipe
+  };
+};
 
 export const closeModal = () => ({ type: actionTypes.CLOSE_MODAL });

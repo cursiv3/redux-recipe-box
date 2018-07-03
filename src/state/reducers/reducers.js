@@ -24,7 +24,7 @@ export const data = (state = [], action) => {
 export const isModalOpen = (state = false, action) => {
   switch (action.type) {
     case actionTypes.OPEN_MODAL:
-      return true;
+      return action.payload;
     case actionTypes.CLOSE_MODAL:
       return false;
     default:

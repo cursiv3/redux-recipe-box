@@ -3,7 +3,8 @@ import { fetchData, openModal } from "../state/actions";
 import App from "./App";
 
 const mapStateToProps = state => ({
-  state: state.data
+  state: state.data,
+  isModalOpen: state.isModalOpen
 });
 
 const mapDispatchToProps = dispatch => {
@@ -11,8 +12,8 @@ const mapDispatchToProps = dispatch => {
     fetchData: () => {
       dispatch(fetchData());
     },
-    openModal: () => {
-      dispatch(openModal());
+    openModal: recipe => {
+      dispatch(openModal(recipe));
     }
   };
 };

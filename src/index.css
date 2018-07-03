@@ -12,35 +12,36 @@ body,
 /*                           BUTTONS                        */
 /*========================================================= */
 
-/*  Main Button  */
-.button-main {
+/* ----------------- Button Shared -----------------  */
+.button-main,
+.button-secondary,
+.button-tertiary {
   padding: 20px;
   display: inline-block;
   border-radius: 5px;
+}
+
+.button-main:hover,
+.button-secondary:hover,
+.button-tertiary:hover {
+  cursor: pointer;
+}
+
+.button-main:active .button-secondary:active,
+.button-tertiary:active {
+  opacity: 0.6;
+}
+
+/* ----------------- Button Colors -----------------  */
+
+.button-main {
   background-color: rgb(82, 181, 238);
 }
 
-.button-main:hover {
-  cursor: pointer;
-}
-
-.button-main:active {
-  opacity: 0.6;
-}
-
-/* Secondary Button  */
-
 .button-secondary {
-  padding: 20px;
-  display: inline-block;
-  border-radius: 5px;
   background-color: rgb(238, 95, 76);
 }
 
-.button-secondary:hover {
-  cursor: pointer;
-}
-
-.button-secondary:active {
-  opacity: 0.6;
+.button-tertiary {
+  background-color: silver;
 }

@@ -1,20 +1,24 @@
 import { connect } from "react-redux";
 import Modal from "./Modal";
-import { openModal, closeModal } from "../../state/actions";
+import { editRecipe, closeModal } from "../../state/actions";
 
 const mapStateToProps = state => ({
-  data: state
+  data: state.isModalOpen,
+  allRecipes: state.data.recipes
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    openModal: () => {
-      dispatch(openModal());
-    },
     closeModal: () => {
       dispatch(closeModal());
+    },
+    editRecipe: (state, id, newObj) => {
+      dispatch(editRecipe(state, id, newObj));
     }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Modal);

@@ -1,0 +1,8 @@
+.recipe-header {
+  display: inline-block;
+}
+
+.recipe-drawer-carat-button {
+  display: inline-table;
+  margin: 0 0 0 20px;
+}
