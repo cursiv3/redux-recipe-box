@@ -13,8 +13,13 @@ class Recipe extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-    this.props !== nextProps ? this.forceUpdate() : null;
+    if (this.props !== nextProps) {
+      let newData = nextProps.data;
+      this.setState({
+        directions: newData.directions,
+        ingredients: newData.ingredients
+      });
+    }
   }
 
   openDrawer() {

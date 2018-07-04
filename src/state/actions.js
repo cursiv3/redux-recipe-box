@@ -26,9 +26,8 @@ export const editRecipe = (recipes, id, updateObj) => {
 
   // here I'd be sending data to the DB for save, using FS since I've mocked it
   DB(updatedRecipes);
-  receiveData(DB());
 
-  return { type: actionTypes.EDIT_RECIPE, payload: updatedRecipes };
+  return { type: actionTypes.EDIT_RECIPE, payload: DB() };
 };
 
 export const deleteRecipe = (recipes, id) => {

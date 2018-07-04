@@ -39,7 +39,6 @@ class Modal extends React.Component {
           <div
             className="button-main"
             onClick={() => {
-              console.log("STATE IS: ", this.state);
               this.props.editRecipe(
                 this.props.allRecipes,
                 this.state.id,

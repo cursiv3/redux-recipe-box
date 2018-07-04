@@ -3,29 +3,8 @@ import Modal from "./Modal";
 import Recipe from "./Recipe";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      recipes: [],
-      idTracker: null,
-      isModalOpen: false
-    };
-  }
-
   componentWillMount() {
-    async function getData(fetchFunc) {
-      fetchFunc();
-    }
-
-    getData(this.props.fetchData).then(() => {
-      var storeData = this.props.state;
-      this.setState({
-        recipes: storeData.recipes,
-        idTracker: storeData.idIncrement,
-        isModalOpen: storeData.isModalOpen
-      });
-    });
+    this.props.fetchData();
   }
 
   modalRenderCheck() {
@@ -35,11 +14,13 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.state.recipes);
     return (
       <div className="recipe-box-container">
-        {this.state.recipes.map(recipeData => (
-          <Recipe key={recipeData.id} data={recipeData} />
-        ))}
+        {this.props.state.recipes !== undefined &&
+          this.props.state.recipes.map(recipeData => (
+            <Recipe key={recipeData.id} data={recipeData} />
+          ))}
         <div className="button-main" onClick={evt => this.props.openModal(evt)}>
           Add Recipe
         </div>
