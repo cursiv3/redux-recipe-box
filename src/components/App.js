@@ -17,6 +17,7 @@ class App extends Component {
     async function getData(fetchFunc) {
       fetchFunc();
     }
+
     getData(this.props.fetchData).then(() => {
       var storeData = this.props.state;
       this.setState({

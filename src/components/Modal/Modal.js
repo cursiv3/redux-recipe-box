@@ -20,29 +20,33 @@ class Modal extends React.Component {
         <div className="modal-box">
           <h5>Ingredients</h5>
           <textarea
+            className="modal-text-area"
             name="ingredients"
             cols="30"
             rows="10"
             value={this.state.ingredients}
           />
+
           <h5>Directions</h5>
-          <div
-            className="div-text-area"
-            contentEditable
+          <textarea
+            className="modal-text-area"
             name="directions"
             cols="50"
             rows="13"
             value={this.state.directions}
           />
+
           <div
             className="button-main"
-            onClick={() =>
+            onClick={() => {
+              console.log("STATE IS: ", this.state);
               this.props.editRecipe(
                 this.props.allRecipes,
                 this.state.id,
                 this.state
-              )
-            }
+              );
+              this.props.closeModal();
+            }}
           >
             Save
           </div>

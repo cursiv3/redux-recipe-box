@@ -25,3 +25,12 @@
   z-index: 3;
   border-radius: 5px;
 }
+
+.modal-text-area {
+  border: none;
+  position: relative;
+  resize: none;
+  min-height: 100px;
+  padding: 5px;
+  box-shadow: 0 0 0 2px rgb(255, 163, 163);
+}

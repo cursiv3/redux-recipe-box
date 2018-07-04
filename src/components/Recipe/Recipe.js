@@ -12,6 +12,11 @@ class Recipe extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    this.props !== nextProps ? this.forceUpdate() : null;
+  }
+
   openDrawer() {
     var result;
     this.state.isDrawerOpen ? (result = false) : (result = true);
@@ -31,24 +36,31 @@ class Recipe extends React.Component {
     return (
       <div className="recipe-wrapper">
         <h3 className="recipe-header">{recipe.name}</h3>
+
         <div
           className="recipe-drawer-carat-button"
           onClick={() => this.openDrawer()}
         >
-          V
+          <strong>V</strong>
         </div>
+
         {this.state.isDrawerOpen && (
           <div className="recipe-drawer">
             <h5>Ingredients</h5>
+
             {this.csvToList(this.state.ingredients, "ul")}
+
             <h5>Directions</h5>
+
             {this.csvToList(this.state.directions, "ol")}
+
             <div
               className="button-secondary"
               onClick={() => this.props.openModal(recipe)}
             >
               Edit
             </div>
+
             <div className="button-tertiary" onClick={() => this.openDrawer()}>
               Close
             </div>
