@@ -4,11 +4,15 @@ import { database } from "../mockDB.js";
 const DB = database();
 
 export const addRecipe = (recipes, obj) => {
+  obj.id = DB().idIncrement + 1;
   recipes.push(obj);
-  return { type: actionTypes.ADD_RECIPE, payload: recipes };
+  DB(recipes, true);
+  console.log(DB());
+  return { type: actionTypes.ADD_RECIPE, payload: DB() };
 };
 
 export const editRecipe = (recipes, id, updateObj) => {
+  console.log(arguments);
   // find what element in the array the updated recipe is
   // assign that value to entry var
   var entry = recipes
@@ -48,10 +52,10 @@ export const receiveData = data => {
   };
 };
 
-export const openModal = recipe => {
+export const openModal = (recipe, buttonName) => {
   return {
     type: actionTypes.OPEN_MODAL,
-    payload: recipe
+    payload: { recipe: recipe, buttonName: buttonName }
   };
 };
 

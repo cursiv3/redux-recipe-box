@@ -22,12 +22,14 @@ export const database = () => {
   let inc = 0;
 
   return (update, idIncrement) => {
-    if (update !== undefined) {
+    if (update !== undefined && idIncrement == true) {
+      console.log("update and increment");
+      update.id = idIncrement + 1;
       db.recipes = update;
-    } else if (idIncrement !== undefined) {
-      db.idIncrement = idIncrement;
-    } else if (update !== undefined && idIncrement !== undefined) {
-      db = { recipes: update, idIncrement: idIncrement };
+      db.idIncrement += 1;
+    } else if (update !== undefined && update !== null) {
+      console.log("just update");
+      db.recipes = update;
     }
     return db;
   };

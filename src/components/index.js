@@ -12,8 +12,8 @@ const mapDispatchToProps = dispatch => {
     fetchData: () => {
       dispatch(fetchData());
     },
-    openModal: recipe => {
-      dispatch(openModal(recipe));
+    openModal: (recipe, name) => {
+      dispatch(openModal(recipe, name));
     }
   };
 };

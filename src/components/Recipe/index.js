@@ -4,8 +4,8 @@ import { editRecipe, deleteRecipe, openModal } from "../../state/actions";
 
 const mapDispatchToProps = dispatch => {
   return {
-    openModal: recipe => {
-      dispatch(openModal(recipe));
+    openModal: (recipe, buttonName) => {
+      dispatch(openModal(recipe, buttonName));
     },
     editItem: () => {
       dispatch(editRecipe());

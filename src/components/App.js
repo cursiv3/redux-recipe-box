@@ -14,14 +14,17 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.state.recipes);
     return (
       <div className="recipe-box-container">
         {this.props.state.recipes !== undefined &&
           this.props.state.recipes.map(recipeData => (
             <Recipe key={recipeData.id} data={recipeData} />
           ))}
-        <div className="button-main" onClick={evt => this.props.openModal(evt)}>
+        <div
+          id="add-button"
+          className="button-main"
+          onClick={evt => this.props.openModal([], evt.target.id)}
+        >
           Add Recipe
         </div>
         {this.modalRenderCheck()}

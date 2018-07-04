@@ -5,12 +5,13 @@ class Modal extends React.Component {
   state = this.props.data;
 
   onChange(evt) {
-    let stateCpy = this.state;
-    stateCpy[evt.target.name] = evt.target.value;
-    this.setState(stateCpy);
+    let recipeCopy = this.state.recipe;
+    recipeCopy[evt.target.name] = evt.target.value;
+    this.setState(recipeCopy);
   }
 
   render() {
+    console.log(this.state);
     return (
       <div
         className="modal-background-wrapper"
@@ -18,13 +19,23 @@ class Modal extends React.Component {
       >
         <div className="modal-opaque-background" />
         <div className="modal-box">
+          <h5>Recipe Name</h5>
+          <textarea
+            className="modal-text-area"
+            style={{ minHeight: "initial" }}
+            name="name"
+            cols="30"
+            rows="1"
+            value={this.state.recipe.name}
+          />
+
           <h5>Ingredients</h5>
           <textarea
             className="modal-text-area"
             name="ingredients"
             cols="30"
             rows="10"
-            value={this.state.ingredients}
+            value={this.state.recipe.ingredients}
           />
 
           <h5>Directions</h5>
@@ -33,17 +44,26 @@ class Modal extends React.Component {
             name="directions"
             cols="50"
             rows="13"
-            value={this.state.directions}
+            value={this.state.recipe.directions}
           />
 
           <div
             className="button-main"
             onClick={() => {
-              this.props.editRecipe(
-                this.props.allRecipes,
-                this.state.id,
-                this.state
-              );
+              if (this.state.buttonName === "edit-button") {
+                this.props.editRecipe(
+                  this.props.allRecipes,
+                  this.state.recipe.id,
+                  this.state.recipe
+                );
+              } else if (this.state.buttonName === "save-button") {
+                let newRecipe = {
+                  name: this.state.recipe.name,
+                  ingredients: this.state.recipe.ingredients,
+                  directions: this.state.recipe.directions
+                };
+                this.props.addRecipe(this.props.allRecipes, newRecipe);
+              }
               this.props.closeModal();
             }}
           >

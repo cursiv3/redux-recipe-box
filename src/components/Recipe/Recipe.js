@@ -60,8 +60,9 @@ class Recipe extends React.Component {
             {this.csvToList(this.state.directions, "ol")}
 
             <div
+              id="edit-button"
               className="button-secondary"
-              onClick={() => this.props.openModal(recipe)}
+              onClick={evt => this.props.openModal(recipe, evt.target.id)}
             >
               Edit
             </div>
