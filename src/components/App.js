@@ -3,8 +3,22 @@ import Modal from "./Modal";
 import Recipe from "./Recipe";
 
 class App extends Component {
+  state = {
+    allRecipes: []
+  };
   componentWillMount() {
-    this.props.fetchData();
+    async function getData(fetchDataFunc) {
+      fetchDataFunc();
+    }
+    getData(this.props.fetchData).then(() => {
+      this.setState({ allRecipes: this.props.state.recipes });
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.props) {
+      this.setState({ allRecipes: nextProps.state.recipes });
+    }
   }
 
   modalRenderCheck() {
@@ -16,10 +30,13 @@ class App extends Component {
   render() {
     return (
       <div className="recipe-box-container">
-        {this.props.state.recipes !== undefined &&
-          this.props.state.recipes.map(recipeData => (
-            <Recipe key={recipeData.id} data={recipeData} />
-          ))}
+        {this.state.allRecipes.map(recipeData => (
+          <Recipe
+            key={recipeData.id}
+            data={recipeData}
+            modalState={this.props.isModalOpen}
+          />
+        ))}
         <div
           id="add-button"
           className="button-main"

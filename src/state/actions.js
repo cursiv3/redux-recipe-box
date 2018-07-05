@@ -1,18 +1,17 @@
 import * as actionTypes from "./actionTypes";
-import { database } from "../mockDB.js";
+//import { database } from "../mockDB.js";
 
-const DB = database();
+const DB = require("../mockDB");
 
 export const addRecipe = (recipes, obj) => {
-  obj.id = DB().idIncrement + 1;
+  obj.id = DB.idIncrement + 1;
   recipes.push(obj);
-  DB(recipes, true);
-  console.log(DB());
-  return { type: actionTypes.ADD_RECIPE, payload: DB() };
+  DB.recipes = recipes;
+
+  return { type: actionTypes.ADD_RECIPE, payload: DB };
 };
 
 export const editRecipe = (recipes, id, updateObj) => {
-  console.log(arguments);
   // find what element in the array the updated recipe is
   // assign that value to entry var
   var entry = recipes
@@ -29,9 +28,9 @@ export const editRecipe = (recipes, id, updateObj) => {
   });
 
   // here I'd be sending data to the DB for save, using FS since I've mocked it
-  DB(updatedRecipes);
+  DB.recipes = updatedRecipes;
 
-  return { type: actionTypes.EDIT_RECIPE, payload: DB() };
+  return { type: actionTypes.EDIT_RECIPE, payload: DB };
 };
 
 export const deleteRecipe = (recipes, id) => {
@@ -43,7 +42,7 @@ export const deleteRecipe = (recipes, id) => {
   };
 };
 
-export const fetchData = () => receiveData(DB());
+export const fetchData = () => receiveData(DB);
 
 export const receiveData = data => {
   return {

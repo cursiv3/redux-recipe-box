@@ -1,5 +1,4 @@
 import React from "react";
-import Modal from "../Modal";
 import "./recipe.css";
 
 class Recipe extends React.Component {
@@ -8,18 +7,9 @@ class Recipe extends React.Component {
     this.state = {
       isDrawerOpen: false,
       directions: this.props.data.directions,
-      ingredients: this.props.data.ingredients
+      ingredients: this.props.data.ingredients,
+      name: this.props.data.name
     };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props !== nextProps) {
-      let newData = nextProps.data;
-      this.setState({
-        directions: newData.directions,
-        ingredients: newData.ingredients
-      });
-    }
   }
 
   openDrawer() {
@@ -30,17 +20,21 @@ class Recipe extends React.Component {
 
   csvToList(csvStr, listType) {
     return listType === "ul" ? (
-      <ul>{csvStr.split(",").map(entry => <li>{entry}</li>)}</ul>
+      <ul>
+        {csvStr.split(",").map((entry, idx) => <li key={idx}>{entry}</li>)}
+      </ul>
     ) : (
-      <ol>{csvStr.split(",").map(entry => <li>{entry}</li>)}</ol>
+      <ol>
+        {csvStr.split(",").map((entry, idx) => <li key={idx}>{entry}</li>)}
+      </ol>
     );
   }
 
   render() {
-    let recipe = this.props.data;
+    let props = this.props.data;
     return (
       <div className="recipe-wrapper">
-        <h3 className="recipe-header">{recipe.name}</h3>
+        <h3 className="recipe-header">{props.name}</h3>
 
         <div
           className="recipe-drawer-carat-button"
@@ -53,16 +47,16 @@ class Recipe extends React.Component {
           <div className="recipe-drawer">
             <h5>Ingredients</h5>
 
-            {this.csvToList(this.state.ingredients, "ul")}
+            {this.csvToList(props.ingredients, "ul")}
 
             <h5>Directions</h5>
 
-            {this.csvToList(this.state.directions, "ol")}
+            {this.csvToList(props.directions, "ol")}
 
             <div
               id="edit-button"
               className="button-secondary"
-              onClick={evt => this.props.openModal(recipe, evt.target.id)}
+              onClick={evt => this.props.openModal(props, evt.target.id)}
             >
               Edit
             </div>

@@ -11,7 +11,6 @@ class Modal extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div
         className="modal-background-wrapper"
