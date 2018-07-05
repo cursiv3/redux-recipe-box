@@ -55,7 +55,7 @@ class Modal extends React.Component {
                   this.state.recipe.id,
                   this.state.recipe
                 );
-              } else if (this.state.buttonName === "save-button") {
+              } else if (this.state.buttonName === "add-button") {
                 let newRecipe = {
                   name: this.state.recipe.name,
                   ingredients: this.state.recipe.ingredients,

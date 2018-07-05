@@ -8,6 +8,8 @@ export const addRecipe = (recipes, obj) => {
   recipes.push(obj);
   DB.recipes = recipes;
 
+  console.log(DB);
+
   return { type: actionTypes.ADD_RECIPE, payload: DB };
 };
 
