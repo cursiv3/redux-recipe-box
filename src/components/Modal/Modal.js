@@ -11,6 +11,23 @@ class Modal extends React.Component {
     this.setState(recipeCopy);
   }
 
+  editOrAdd(editAction, addAction) {
+    if (this.state.buttonName === "edit-button") {
+      editAction(
+        this.props.allRecipes,
+        this.state.recipe.id,
+        this.state.recipe
+      );
+    } else if (this.state.buttonName === "add-button") {
+      let newRecipe = {
+        name: this.state.recipe.name,
+        ingredients: this.state.recipe.ingredients,
+        directions: this.state.recipe.directions
+      };
+      addAction(this.props.allRecipes, newRecipe);
+    }
+  }
+
   render() {
     return (
       <div
@@ -58,20 +75,7 @@ class Modal extends React.Component {
           <div
             className="button-main "
             onClick={() => {
-              if (this.state.buttonName === "edit-button") {
-                this.props.editRecipe(
-                  this.props.allRecipes,
-                  this.state.recipe.id,
-                  this.state.recipe
-                );
-              } else if (this.state.buttonName === "add-button") {
-                let newRecipe = {
-                  name: this.state.recipe.name,
-                  ingredients: this.state.recipe.ingredients,
-                  directions: this.state.recipe.directions
-                };
-                this.props.addRecipe(this.props.allRecipes, newRecipe);
-              }
+              this.editOrAdd(this.props.editRecipe, this.props.addRecipe);
               this.props.closeModal();
             }}
           >

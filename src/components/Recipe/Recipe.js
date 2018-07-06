@@ -1,4 +1,5 @@
 import React from "react";
+import { csvToList } from "../../helpers/csvToList";
 import "./recipe.css";
 
 class Recipe extends React.Component {
@@ -16,26 +17,6 @@ class Recipe extends React.Component {
     var result;
     this.state.isDrawerOpen ? (result = false) : (result = true);
     this.setState({ isDrawerOpen: result });
-  }
-
-  csvToList(csvStr, listType) {
-    return listType === "ul" ? (
-      <ul>
-        {csvStr.split("\n").map((entry, idx) => (
-          <li className="recipe-list-ingredients" key={idx}>
-            {entry}
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <ol>
-        {csvStr.split("\n").map((entry, idx) => (
-          <li className="recipe-list-directions" key={idx}>
-            {entry}
-          </li>
-        ))}
-      </ol>
-    );
   }
 
   render() {
@@ -58,7 +39,7 @@ class Recipe extends React.Component {
             <hr style={{ width: "30%" }} />
 
             <div className="recipe-ingredients-container">
-              {this.csvToList(props.ingredients, "ul")}
+              {csvToList(props.ingredients, "ul")}
             </div>
 
             <h5>Directions</h5>
@@ -66,7 +47,7 @@ class Recipe extends React.Component {
             <hr style={{ width: "50%" }} />
 
             <div className="recipe-directions-container">
-              {this.csvToList(props.directions, "ol")}
+              {csvToList(props.directions, "ol")}
             </div>
 
             <hr style={{ width: "50%" }} />
