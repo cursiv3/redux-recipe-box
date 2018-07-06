@@ -50,13 +50,13 @@ class Modal extends React.Component {
           <textarea
             className="modal-text-area"
             name="directions"
-            cols="50"
+            cols="39"
             rows="13"
             value={this.state.recipe.directions}
           />
-
+          <br />
           <div
-            className="button-main"
+            className="button-main "
             onClick={() => {
               if (this.state.buttonName === "edit-button") {
                 this.props.editRecipe(
@@ -78,7 +78,7 @@ class Modal extends React.Component {
             Save
           </div>
           <div
-            className="button-secondary"
+            className="button-secondary "
             onClick={() => this.props.closeModal()}
           >
             Cancel

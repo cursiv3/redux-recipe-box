@@ -5,10 +5,9 @@ const DB = require("../mockDB");
 
 export const addRecipe = (recipes, obj) => {
   obj.id = DB.idIncrement + 1;
+  DB.idIncrement++;
   recipes.push(obj);
   DB.recipes = recipes;
-
-  console.log(DB);
 
   return { type: actionTypes.ADD_RECIPE, payload: DB };
 };
@@ -22,9 +21,6 @@ export const editRecipe = (recipes, id, updateObj) => {
     })
     .indexOf(id);
 
-  // map through recipes, when we reach the element that needs to be updated
-  // return the updateObj from the modal to the array
-  // else return the element as is
   var updatedRecipes = recipes.map((recipe, idx) => {
     return idx === entry ? updateObj : recipe;
   });

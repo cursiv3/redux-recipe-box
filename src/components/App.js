@@ -34,17 +34,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="recipe-box-container">
-        {this.state.allRecipes.map(recipeData => (
-          <Recipe
-            key={recipeData.id}
-            data={recipeData}
-            modalState={this.props.isModalOpen}
-          />
-        ))}
+      <div className="app-wrapper">
+        <div className="recipe-box-container">
+          {this.state.allRecipes.map(recipeData => (
+            <Recipe
+              key={recipeData.id}
+              data={recipeData}
+              modalState={this.props.isModalOpen}
+            />
+          ))}
+        </div>
         <div
           id="add-button"
-          className="button-main"
+          className="button-main center-button"
           onClick={evt => this.props.openModal([], evt.target.id)}
         >
           Add Recipe

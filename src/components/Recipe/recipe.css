@@ -1,5 +1,36 @@
+.recipe-wrapper {
+  position: relative;
+  text-align: center;
+}
+
+.recipe-wrapper:nth-child(even) {
+  background-color: rgb(241, 241, 241);
+}
+
 .recipe-header {
   display: inline-block;
+}
+
+.recipe-list-ingredients {
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+
+.recipe-list-directions {
+  width: 100%;
+  position: relative;
+  text-align: left;
+}
+
+.recipe-ingredients-container {
+  display: inline-block;
+  width: 100%;
+}
+
+.recipe-directions-container {
+  display: inline-block;
+  width: 100%;
 }
 
 .recipe-drawer-carat-button {
@@ -11,4 +42,14 @@
 .recipe-drawer-carat-button:hover {
   cursor: pointer;
   opacity: 0.7;
+}
+
+@media screen and (min-width: 1250px) {
+  .recipe-ingredients-container {
+    width: 30%;
+  }
+
+  .recipe-directions-container {
+    width: 50%;
+  }
 }

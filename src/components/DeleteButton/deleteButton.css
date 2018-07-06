@@ -12,6 +12,10 @@
   -o-transform: translateX(-50%);
 }
 
+.delete-button-wrapper:hover {
+  cursor: pointer;
+}
+
 .delete-button-div1 {
   position: absolute;
   top: 45%;
@@ -38,4 +42,8 @@
   -moz-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
+}
+
+.delete-button-text-div {
+  margin: 30px 0 0 -5px;
 }

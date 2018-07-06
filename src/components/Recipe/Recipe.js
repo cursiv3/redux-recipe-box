@@ -21,11 +21,19 @@ class Recipe extends React.Component {
   csvToList(csvStr, listType) {
     return listType === "ul" ? (
       <ul>
-        {csvStr.split("\n").map((entry, idx) => <li key={idx}>{entry}</li>)}
+        {csvStr.split("\n").map((entry, idx) => (
+          <li className="recipe-list-ingredients" key={idx}>
+            {entry}
+          </li>
+        ))}
       </ul>
     ) : (
       <ol>
-        {csvStr.split("\n").map((entry, idx) => <li key={idx}>{entry}</li>)}
+        {csvStr.split("\n").map((entry, idx) => (
+          <li className="recipe-list-directions" key={idx}>
+            {entry}
+          </li>
+        ))}
       </ol>
     );
   }
@@ -47,11 +55,21 @@ class Recipe extends React.Component {
           <div className="recipe-drawer">
             <h5>Ingredients</h5>
 
-            {this.csvToList(props.ingredients, "ul")}
+            <hr style={{ width: "30%" }} />
+
+            <div className="recipe-ingredients-container">
+              {this.csvToList(props.ingredients, "ul")}
+            </div>
 
             <h5>Directions</h5>
 
-            {this.csvToList(props.directions, "ol")}
+            <hr style={{ width: "50%" }} />
+
+            <div className="recipe-directions-container">
+              {this.csvToList(props.directions, "ol")}
+            </div>
+
+            <hr style={{ width: "50%" }} />
 
             <div
               id="edit-button"
