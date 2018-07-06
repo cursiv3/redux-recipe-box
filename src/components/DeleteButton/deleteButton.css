@@ -1,0 +1,41 @@
+.delete-button-wrapper {
+  box-sizing: border-box;
+  border: 3px solid red;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 90%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.delete-button-div1 {
+  position: absolute;
+  top: 45%;
+  left: -2.5%;
+  width: 25px;
+  height: 3px;
+  background-color: red;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+
+.delete-button-div2 {
+  position: absolute;
+  top: 45%;
+  left: -2.5%;
+  width: 25px;
+  height: 3px;
+  background-color: red;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+}

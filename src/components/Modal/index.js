@@ -1,6 +1,11 @@
 import { connect } from "react-redux";
 import Modal from "./Modal";
-import { editRecipe, addRecipe, closeModal } from "../../state/actions";
+import {
+  editRecipe,
+  addRecipe,
+  closeModal,
+  deleteRecipe
+} from "../../state/actions";
 
 const mapStateToProps = state => ({
   data: state.isModalOpen,
@@ -17,6 +22,9 @@ const mapDispatchToProps = dispatch => {
     },
     addRecipe: (recipesList, newObj) => {
       dispatch(addRecipe(recipesList, newObj));
+    },
+    deleteRecipe: (recipesList, id) => {
+      dispatch(deleteRecipe(recipesList, id));
     }
   };
 };

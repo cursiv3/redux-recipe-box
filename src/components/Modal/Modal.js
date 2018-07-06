@@ -1,4 +1,5 @@
 import React from "react";
+import DeleteButton from "../DeleteButton/DeleteButton";
 import "./modal.css";
 
 class Modal extends React.Component {
@@ -18,6 +19,14 @@ class Modal extends React.Component {
       >
         <div className="modal-opaque-background" />
         <div className="modal-box">
+          {this.state.buttonName === "edit-button" && (
+            <DeleteButton
+              recipeId={this.state.recipe.id}
+              recipesList={this.props.allRecipes}
+              deleteRecipe={this.props.deleteRecipe}
+              closeModal={this.props.closeModal}
+            />
+          )}
           <h5>Recipe Name</h5>
           <textarea
             className="modal-text-area"

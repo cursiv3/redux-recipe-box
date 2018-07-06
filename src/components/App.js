@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import Modal from "./Modal";
 import Recipe from "./Recipe";
 
+async function getData(fetchDataFunc) {
+  fetchDataFunc();
+}
+
 class App extends Component {
   state = {
     allRecipes: []
   };
+
   componentWillMount() {
-    async function getData(fetchDataFunc) {
-      fetchDataFunc();
-    }
     getData(this.props.fetchData).then(() => {
       this.setState({ allRecipes: this.props.state.recipes });
     });
@@ -22,6 +24,9 @@ class App extends Component {
   }
 
   modalRenderCheck() {
+    /* 
+    Just showing I know this method of conditional rendering in React
+    */
     if (this.props.isModalOpen) {
       return <Modal />;
     }

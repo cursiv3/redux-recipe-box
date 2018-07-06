@@ -37,10 +37,11 @@ export const editRecipe = (recipes, id, updateObj) => {
 
 export const deleteRecipe = (recipes, id) => {
   let updatedRecipes = recipes.filter(recipe => recipe.id !== id);
+  DB.recipes = updatedRecipes;
 
   return {
     type: actionTypes.DELETE_RECIPE,
-    payload: updatedRecipes
+    payload: DB
   };
 };
 

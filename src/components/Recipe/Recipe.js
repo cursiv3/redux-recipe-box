@@ -21,11 +21,11 @@ class Recipe extends React.Component {
   csvToList(csvStr, listType) {
     return listType === "ul" ? (
       <ul>
-        {csvStr.split(",").map((entry, idx) => <li key={idx}>{entry}</li>)}
+        {csvStr.split("\n").map((entry, idx) => <li key={idx}>{entry}</li>)}
       </ul>
     ) : (
       <ol>
-        {csvStr.split(",").map((entry, idx) => <li key={idx}>{entry}</li>)}
+        {csvStr.split("\n").map((entry, idx) => <li key={idx}>{entry}</li>)}
       </ol>
     );
   }
