@@ -13,12 +13,6 @@ module.exports = {
       ingredients: "2 slices Bread\n Cheddar cheese\n butter",
       directions:
         "Lay bread out\n spread butter on both pieces of bread\n place sliced cheese on bread\n combine slices of bread\n place in pan over medium heat, cover\n flip after 4 min\n wait 4 min, then remove and eat"
-    },
-    {
-      id: 3,
-      name: "Captain Crunch Cereal",
-      ingredients: "Captain Crunch cereal\n Milk\n",
-      directions: "Pour the cereal into a bowl\n pour the milk over the cereal"
     }
   ],
   idIncrement: 2
